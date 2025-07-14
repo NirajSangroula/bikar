@@ -1,5 +1,5 @@
 spring:
   application:
     name: orchrestrator-bikar
-server:
-  port: 8084
+  config:
+    import: optional:configserver:http://localhost:8888

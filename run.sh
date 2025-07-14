@@ -2,6 +2,13 @@ trap "echo -e '\nCaught Ctrl+C! Stopping all microservices...'; kill 0; exit 1" 
 echo "Starting API Gateway Server"
 mvn spring-boot:run -f bikar-gateway/ &
 
+echo "Starting Cloud Config Server"
+mvn spring-boot:run -f bikar-config-server/ &
+
+#Wait config server to run
+echo "Waiting config server to start"
+sleep 5
+
 echo "Starting Bikar-User-Account"
 mvn spring-boot:run -f bikar-useraccount/ &
 

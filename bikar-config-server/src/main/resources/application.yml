@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: bikar-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: file://${HOME}/Documents/bikar-config
+          default-label: main
+server:
+  port: 8888
