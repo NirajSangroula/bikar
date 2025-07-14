@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: orchrestrator-bikar
+server:
+  port: 8084

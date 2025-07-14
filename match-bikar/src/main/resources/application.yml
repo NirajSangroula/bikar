@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: match-bikar
+server:
+  port: 8083

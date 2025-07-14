@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring.application.name=
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id : offer-service
+              uri: http://localhost:8082
+              predicates:
+                - Path=/offer/**
+server:
+  port: 8080

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: bikar-useraccount
+server:
+  port: 8081
