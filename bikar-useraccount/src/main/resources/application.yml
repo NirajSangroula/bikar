@@ -3,3 +3,16 @@ spring:
     name: bikar-useraccount
   config:
     import: optional:configserver:http://localhost:8888
+  h2:
+    console:
+      enabled: true
+  datasource:
+    username: sa
+    password:
+    url: jdbc:h2:./mydb
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  profiles:
+    active: dev
