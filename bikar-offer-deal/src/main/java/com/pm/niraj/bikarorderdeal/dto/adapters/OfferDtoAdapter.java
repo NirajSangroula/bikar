@@ -17,11 +17,9 @@ public class OfferDtoAdapter {
                 .description(offer.getDescription())
                 .build();
     }
-
     public Offer offerFrom(OfferDto dto, OfferDtoConversionService service) {
         return Offer.builder()
                 .provider(service.getProviderById(dto.getProviderId()))
-                .status(service.getOfferStatus(dto.getStatus()))
                 .offerType(service.getOfferType(dto.getOfferType()))
                 .title(dto.getTitle())
                 .description(dto.getDescription()).build();
