@@ -1,7 +1,7 @@
-package com.pm.niraj.bikarorderdeal.publisher;
+package com.pm.niraj.sharedlib.publisher;
 
 
-import com.pm.niraj.bikarorderdeal.domain.event.DomainEvent;
+import com.pm.niraj.sharedlib.event.DomainEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
