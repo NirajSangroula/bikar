@@ -3,13 +3,12 @@ package com.pm.niraj.bikarorderdeal.domain.entity;
 
 import com.pm.niraj.bikarorderdeal.domain.entity.enums.OfferStatus;
 import com.pm.niraj.bikarorderdeal.domain.entity.enums.OfferType;
-import com.pm.niraj.bikarorderdeal.domain.event.DomainEvent;
-import com.pm.niraj.bikarorderdeal.domain.event.OfferCreatedEvent;
+import com.pm.niraj.sharedlib.event.DomainEvent;
+import com.pm.niraj.sharedlib.event.OfferCreatedEvent;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
-import org.springframework.data.domain.DomainEvents;
 
 import java.util.Collections;
 import java.util.List;
