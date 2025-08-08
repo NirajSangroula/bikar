@@ -3,10 +3,16 @@ package com.pm.niraj.bikarorderdeal.domain.entity;
 
 import com.pm.niraj.bikarorderdeal.domain.entity.enums.OfferStatus;
 import com.pm.niraj.bikarorderdeal.domain.entity.enums.OfferType;
+import com.pm.niraj.bikarorderdeal.domain.event.DomainEvent;
+import com.pm.niraj.bikarorderdeal.domain.event.OfferCreatedEvent;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
+import org.springframework.data.domain.DomainEvents;
+
+import java.util.Collections;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -34,4 +40,8 @@ public class Offer extends BaseModel{
     @Min(4)
     @Max(10000)
     String description;
+
+    public List<DomainEvent> create(){
+        return Collections.singletonList(new OfferCreatedEvent(this));
+    }
 }
