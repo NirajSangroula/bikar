@@ -1,5 +1,6 @@
 package com.pm.niraj.bikarorderdeal.api;
 
+import com.pm.niraj.bikarorderdeal.DebeziumConfig;
 import com.pm.niraj.bikarorderdeal.domain.entity.Offer;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
@@ -19,7 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.bind.annotation.InitBinder;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "debezium.enabled=false")
 @ActiveProfiles("test")
 public class OfferDealControllerTest {
     @Autowired
