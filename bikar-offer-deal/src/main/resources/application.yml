@@ -24,5 +24,7 @@ spring:
     consumer:
       value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
       key-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
+debezium:
+  enabled: true
 
 
