@@ -7,9 +7,9 @@ spring:
     console:
       enabled: true
   datasource:
-    username: user
-    password: password
-    url: jdbc:mysql://localhost:3306/mydb
+    username: root
+    password: rootpassword
+    url: jdbc:mysql://localhost:3306/testdb
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
