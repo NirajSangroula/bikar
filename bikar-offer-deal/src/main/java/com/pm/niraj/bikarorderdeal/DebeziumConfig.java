@@ -5,8 +5,10 @@ import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.format.Json;
 import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -15,6 +17,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 @Configuration
+@ConditionalOnProperty(name = "debezium.enabled", havingValue = "true", matchIfMissing = false)
+@Profile("!test")
 public class DebeziumConfig {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
