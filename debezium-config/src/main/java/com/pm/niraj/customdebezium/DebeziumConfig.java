@@ -17,8 +17,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 @Configuration
-@ConditionalOnProperty(name = "debezium.enabled", havingValue = "true", matchIfMissing = false)
 @ComponentScan("com.pm.niraj.customdebezium")
+@Profile("!test")
 public abstract class DebeziumConfig {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();

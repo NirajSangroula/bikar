@@ -98,13 +98,21 @@
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>com.pm.niraj</groupId>
-            <artifactId>debezium-config</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.pm.niraj</groupId>
+                    <artifactId>debezium-config</artifactId>
+                    <version>1.0-SNAPSHOT</version>
+                    <scope>compile</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
     <dependencyManagement>
         <dependencies>
             <dependency>

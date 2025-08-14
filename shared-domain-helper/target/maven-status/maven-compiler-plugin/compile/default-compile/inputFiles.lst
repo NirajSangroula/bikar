@@ -1,3 +1,4 @@
+/home/niraj/bikar/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/SharedLibWebConfig.java
 /home/niraj/bikar/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/event/DomainEvent.java
 /home/niraj/bikar/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/event/OfferCreatedEvent.java
 /home/niraj/bikar/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/publisher/DomainEventPublisher.java
