@@ -1,6 +1,6 @@
 package com.pm.niraj.sharedlib;
 
-import org.springframework.context.annotation.ComponentScan;
+import rg.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
