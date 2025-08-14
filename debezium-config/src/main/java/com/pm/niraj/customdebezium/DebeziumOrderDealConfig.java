@@ -1,11 +1,13 @@
-package com.pm.niraj.bikarorderdeal;
+package com.pm.niraj.customdebezium;
 
-import com.pm.niraj.customdebezium.CustomDebeziumParams;
-import com.pm.niraj.customdebezium.DebeziumConfig;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("!test")
+@ConditionalOnProperty(name = "debezium.enabled", havingValue = "true", matchIfMissing = false)
 public class DebeziumOrderDealConfig extends DebeziumConfig {
     @Autowired(required = false)
     private org.springframework.kafka.core.KafkaTemplate<String, String> kafkaTemplate;
