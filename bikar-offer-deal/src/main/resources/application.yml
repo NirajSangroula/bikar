@@ -26,5 +26,7 @@ spring:
       key-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
 debezium:
   enabled: true
+cdc-topic:
+  name: cdc-offer-deal
 
 

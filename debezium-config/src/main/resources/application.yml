@@ -5,3 +5,5 @@ kafka:
   consumer:
     value-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
     key-deserializer: org.springframework.kafka.support.serializer.JsonSerializer
+cdc-topic:
+  name: cdc-default-topic
