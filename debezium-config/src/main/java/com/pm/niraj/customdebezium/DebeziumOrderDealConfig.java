@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 
 @Configuration
 @Profile("!test")
-@ConditionalOnProperty(name = "debezium.enabled", havingValue = "true", matchIfMissing = false)
 public class DebeziumOrderDealConfig extends DebeziumConfig {
     @Value("${cdc-topic.name}")
     private String kafkaTopic;
