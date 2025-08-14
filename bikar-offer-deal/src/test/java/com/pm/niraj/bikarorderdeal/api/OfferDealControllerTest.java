@@ -1,34 +1,38 @@
 package com.pm.niraj.bikarorderdeal.api;
 
-import com.pm.niraj.bikarorderdeal.DebeziumConfig;
+import com.pm.niraj.bikarorderdeal.BikarOrderDealApplication;
 import com.pm.niraj.bikarorderdeal.domain.entity.Offer;
 import static org.junit.jupiter.api.Assertions.*;
 
 import com.pm.niraj.bikarorderdeal.domain.entity.enums.OfferStatus;
 import com.pm.niraj.bikarorderdeal.domain.entity.enums.OfferType;
 import com.pm.niraj.bikarorderdeal.dto.OfferDto;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.web.bind.annotation.InitBinder;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "debezium.enabled=false")
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = {"debezium.enabled=false"},
+        classes = {BikarOrderDealApplication.class}
+)
 @ActiveProfiles("test")
 public class OfferDealControllerTest {
     @Autowired
     public TestRestTemplate restTemplate;
 
-    @Value("${local.server.port}")
+    @LocalServerPort
     private int port;
+
+    @Test
+    void contextLoads(){
+        System.out.println("Port = " + port);
+    }
 
     private final String BASE_URL = "http://localhost:";
 

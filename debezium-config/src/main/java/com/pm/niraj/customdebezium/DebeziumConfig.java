@@ -1,15 +1,15 @@
-package com.pm.niraj.bikarorderdeal;
+package com.pm.niraj.customdebezium;
 
 import io.debezium.engine.ChangeEvent;
 import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.format.Json;
-import jakarta.annotation.PreDestroy;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;
@@ -18,15 +18,13 @@ import java.util.concurrent.Future;
 
 @Configuration
 @ConditionalOnProperty(name = "debezium.enabled", havingValue = "true", matchIfMissing = false)
-@Profile("!test")
-public class DebeziumConfig {
+@ComponentScan("com.pm.niraj.customdebezium")
+public abstract class DebeziumConfig {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private DebeziumEngine<ChangeEvent<String, String>> engine;
     private Future<?> engineTask;
 
-    @Autowired(required = false)
-    private org.springframework.kafka.core.KafkaTemplate<String, String> kafkaTemplate;
 
 
     @Bean
@@ -41,8 +39,8 @@ public class DebeziumConfig {
         props.setProperty("database.password", "dbzpassword");
         props.setProperty("database.server.id", "85744");
         props.setProperty("database.server.name", "myserver");
-        props.setProperty("database.include.list", "mydb");
-        props.setProperty("table.include.list", "mydb.offer");
+        props.setProperty("database.include.list", "testdb");
+        props.setProperty("table.include.list", "testdb.offer");
 
         // Use Kafka for schema history storage
         props.setProperty("schema.history.internal", "io.debezium.storage.kafka.history.KafkaSchemaHistory");
@@ -72,15 +70,11 @@ public class DebeziumConfig {
     }
 
     private void handleChangeEvent(ChangeEvent<String, String> changeEvent) {
-        String eventValue = changeEvent.value();
-
-        System.out.println("CDC event received: " + eventValue);
-
-        // Optional: send event to Kafka topic "cdc-topic"
-        if (kafkaTemplate != null) {
-            kafkaTemplate.send("cdc-topic", eventValue);
-        }
+        getCustomDebeziumParams().handleChangeEvent(changeEvent.key(), changeEvent.value());
     }
+
+    protected abstract CustomDebeziumParams getCustomDebeziumParams();
+
 
     @PreDestroy
     public void shutdown() throws IOException {
