@@ -1,9 +1,10 @@
 package com.pm.niraj.customdebezium;
 
+import com.pm.niraj.sharedlib.debezium.CustomDebeziumParams;
 import io.debezium.engine.ChangeEvent;
 import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.format.Json;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -19,11 +20,13 @@ import java.util.concurrent.Future;
 @Configuration
 @ComponentScan("com.pm.niraj.customdebezium")
 @Profile("!test")
-public abstract class DebeziumConfig {
+public class DebeziumConfig {
 
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private DebeziumEngine<ChangeEvent<String, String>> engine;
     private Future<?> engineTask;
+    @Autowired
+    private CustomDebeziumParams customDebeziumParams;
 
 
 
@@ -70,11 +73,8 @@ public abstract class DebeziumConfig {
     }
 
     private void handleChangeEvent(ChangeEvent<String, String> changeEvent) {
-        getCustomDebeziumParams().handleChangeEvent(changeEvent.key(), changeEvent.value());
+        customDebeziumParams.handleChangeEvent(changeEvent.key(), changeEvent.value());
     }
-
-    protected abstract CustomDebeziumParams getCustomDebeziumParams();
-
 
     @PreDestroy
     public void shutdown() throws IOException {

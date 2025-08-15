@@ -20,7 +20,6 @@ public class OfferApplicationService {
         offer.setStatus(OfferStatus.CREATED);
         Offer savedOffer = offerRepository.save(offer);
         //Use debezium to properly do stuff here: transactional log trailing ok
-        publisher.publish(offer, offer.create());
         return Optional.of(savedOffer);
     }
 }
