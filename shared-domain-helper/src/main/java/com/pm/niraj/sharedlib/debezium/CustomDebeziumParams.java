@@ -1,4 +1,4 @@
-package com.pm.niraj.customdebezium;
+package com.pm.niraj.sharedlib.debezium;
 
 
 public interface CustomDebeziumParams {

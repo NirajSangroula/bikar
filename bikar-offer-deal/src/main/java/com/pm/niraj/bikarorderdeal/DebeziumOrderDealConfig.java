@@ -1,22 +1,23 @@
-package com.pm.niraj.customdebezium;
+package com.pm.niraj.bikarorderdeal;
 
+import com.pm.niraj.sharedlib.debezium.CustomDebeziumParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.*;
 
 @Configuration
 @Profile("!test")
-public class DebeziumOrderDealConfig extends DebeziumConfig {
+@ComponentScan("com.pm.niraj.customdebezium")
+public class DebeziumOrderDealConfig{
     @Value("${cdc-topic.name}")
     private String kafkaTopic;
     @Autowired(required = false)
     private org.springframework.kafka.core.KafkaTemplate<String, String> kafkaTemplate;
 
 
-    @Override
-    protected CustomDebeziumParams getCustomDebeziumParams() {
+    @Bean
+    @Primary
+    public CustomDebeziumParams getCustomDebeziumParams() {
         return (key, value) -> {
             String eventValue = value;
             System.out.println("CDC event received: " + eventValue + " in topic " + kafkaTopic);
