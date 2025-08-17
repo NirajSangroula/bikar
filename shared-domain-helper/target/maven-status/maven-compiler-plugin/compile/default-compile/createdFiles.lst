@@ -1,6 +1,7 @@
 com/pm/niraj/sharedlib/debezium/CustomDebeziumParams.class
 com/pm/niraj/sharedlib/publisher/DomainEventPublisher.class
 com/pm/niraj/sharedlib/event/DomainEvent.class
+com/pm/niraj/sharedlib/event/OfferCreatedEvent$OfferCreatedEventBuilder.class
 com/pm/niraj/sharedlib/event/OfferCreatedEvent.class
 com/pm/niraj/sharedlib/SharedLibWebConfig.class
 com/pm/niraj/sharedlib/publisher/DummyDomainEventPublisher.class

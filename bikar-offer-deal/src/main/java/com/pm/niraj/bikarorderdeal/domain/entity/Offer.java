@@ -41,6 +41,10 @@ public class Offer extends BaseModel{
     String description;
 
     public List<DomainEvent> create(){
-        return Collections.singletonList(new OfferCreatedEvent(this));
+        return Collections.singletonList(OfferCreatedEvent.builder()
+                .offerId(getId())
+                .createdAt(this.getCreatedAt())
+                .providerId(this.getProvider().getId())
+                .build());
     }
 }
