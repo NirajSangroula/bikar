@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringJUnitConfig(classes = {OfferCreatedTransformerFactory.class})
 public class DebeziumTransformerFactoryTest {
@@ -19,7 +22,7 @@ public class DebeziumTransformerFactoryTest {
     public void test_Transformer_Produces_Correct_Properties_For_Offer_Created() throws JsonProcessingException {
         OfferCreatedEvent event = debeziumTransformerFactory.createDebeziumTranslator().transform(getJsonPayload());
         assertEquals(1, event.getOfferId());
-        assertEquals("2025-08-17T10:15:30Z", event.getCreatedAt().toString());
+        assertEquals(Instant.ofEpochMilli(1755461128255674L).toString(), event.getCreatedAt().toString());
         assertEquals(1, event.getProviderId());
     }
     public static JsonNode getJsonPayload() throws JsonProcessingException {
