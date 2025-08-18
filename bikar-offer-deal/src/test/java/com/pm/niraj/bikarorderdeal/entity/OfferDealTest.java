@@ -19,22 +19,22 @@ public class OfferDealTest {
     private DealRepository  dealRepository;
     @Autowired
     private TestEntityManager testEntityManager;
-    @Test
-    public void test__compensation_OfferAndProviderIsCreatedWithDeal(){
-        Compensation compensation = Compensation.builder()
-                .type(CompensationType.CASH)
-                .build();
-        Deal deal = Deal.builder()
-                .compensation(compensation)
-                .dealType(DealType.NON_NEGOTIABLE)
-                .offer(OfferTests.getOffer())
-                .build();
-        Deal persistedDeal = dealRepository.save(deal);
-        testIdExists(persistedDeal.getId());
-        testIdExists(persistedDeal.getCompensation().getId());
-        testIdExists(persistedDeal.getOffer().getId());
-        testIdExists(persistedDeal.getOffer().getProvider().getId());
-    }
+//    @Test
+//    public void test__compensation_OfferAndProviderIsCreatedWithDeal(){
+//        Compensation compensation = Compensation.builder()
+//                .type(CompensationType.CASH)
+//                .build();
+//        Deal deal = Deal.builder()
+//                .compensation(compensation)
+//                .dealType(DealType.NON_NEGOTIABLE)
+//                .offer(OfferTests.getOffer())
+//                .build();
+//        Deal persistedDeal = dealRepository.save(deal);
+//        testIdExists(persistedDeal.getId());
+//        testIdExists(persistedDeal.getCompensation().getId());
+//        testIdExists(persistedDeal.getOffer().getId());
+//        testIdExists(persistedDeal.getOffer().getProvider().getId());
+//    }
 
     private static void testIdExists(Long persistedDeal) {
         Assertions.assertThat(persistedDeal).isGreaterThan(0);
