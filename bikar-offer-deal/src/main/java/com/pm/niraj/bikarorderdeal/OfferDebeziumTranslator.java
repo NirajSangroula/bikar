@@ -1,5 +1,7 @@
 package com.pm.niraj.bikarorderdeal;
 
+import com.pm.niraj.sharedlib.debezium.DebeziumTransformerFactory;
+import com.pm.niraj.sharedlib.debezium.DebeziumTranslator;
 import com.pm.niraj.sharedlib.event.OfferCreatedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

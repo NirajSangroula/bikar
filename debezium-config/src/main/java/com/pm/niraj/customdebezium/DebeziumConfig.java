@@ -73,7 +73,12 @@ public class DebeziumConfig {
     }
 
     private void handleChangeEvent(ChangeEvent<String, String> changeEvent) {
-        customDebeziumParams.handleChangeEvent(changeEvent.key(), changeEvent.value());
+        try{
+            customDebeziumParams.handleChangeEvent(changeEvent.key(), changeEvent.value());
+        }
+        catch(Exception exception){
+            throw new RuntimeException(exception);
+        }
     }
 
     @PreDestroy

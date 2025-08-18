@@ -1,18 +1,17 @@
-package com.pm.niraj.bikarorderdeal;
+package com.pm.niraj.sharedlib.debezium;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pm.niraj.sharedlib.event.OfferCreatedEvent;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 public abstract class DebeziumTranslator<T> {
     private final DebeziumTransformerFactory<T> transformerFactory;
+    @Getter
+    @Setter
     @Value("${dbz.transformer.table}")
     private String tableName;
 

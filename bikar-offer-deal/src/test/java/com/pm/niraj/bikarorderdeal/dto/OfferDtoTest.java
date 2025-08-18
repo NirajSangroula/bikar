@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.pm.niraj.bikarorderdeal.dto.adapters.OfferDtoConversionService.OfferDtoConversionService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import static org.mockito.Mockito.*;
 
 public class OfferDtoTest {

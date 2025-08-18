@@ -2,6 +2,7 @@ package com.pm.niraj.bikarorderdeal;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pm.niraj.sharedlib.debezium.CustomDebeziumParams;
+import com.pm.niraj.sharedlib.debezium.DebeziumTranslator;
 import com.pm.niraj.sharedlib.event.OfferCreatedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,7 +23,7 @@ public class DebeziumOrderDealConfig{
 
     @Bean
     @Primary
-    public CustomDebeziumParams getCustomDebeziumParams() {
+    public CustomDebeziumParams getCustomDebeziumParams(){
         return (key, value) -> {
             String eventValue = value;
             System.out.println("CDC event received: " + eventValue + " in topic " + kafkaTopic);

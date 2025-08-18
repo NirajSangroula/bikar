@@ -1,6 +1,4 @@
-package com.pm.niraj.bikarorderdeal;
-
-import com.pm.niraj.sharedlib.event.OfferCreatedEvent;
+package com.pm.niraj.sharedlib.debezium;
 
 public interface DebeziumTransformerFactory<T> {
     Transformer<T> createDebeziumTranslator();

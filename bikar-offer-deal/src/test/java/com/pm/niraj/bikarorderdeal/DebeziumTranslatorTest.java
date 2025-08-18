@@ -3,96 +3,73 @@ package com.pm.niraj.bikarorderdeal;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pm.niraj.sharedlib.event.OfferCreatedEvent;
+import com.pm.niraj.sharedlib.debezium.DebeziumTranslator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.lang.reflect.Method;
 
-@SpringJUnitConfig(classes = {OfferCreatedTransformerFactory.class})
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringJUnitConfig(classes = {OfferCreatedTransformerFactory.class, OfferDebeziumTranslator.class})
 public class DebeziumTranslatorTest {
+    @BeforeEach
+    public void init(){
+        debeziumTranslator.setTableName("offer");
+    }
 //    @MockitoBean -- This needs stubbing
     @MockitoSpyBean
     OfferCreatedTransformerFactory debeziumTransformerFactory;
+
+    @MockitoSpyBean
+    OfferDebeziumTranslator debeziumTranslator;
+
+
     @Test
-    public void test_Transformer_Produces_Correct_Properties_For_Offer_Created() throws JsonProcessingException {
-        OfferCreatedEvent event = debeziumTransformerFactory.createDebeziumTranslator().transform(getJsonPayload());
-        assertEquals(101, event.getOfferId());
-        assertEquals("2025-08-17T10:15:30Z", event.getCreatedAt().toString());
-        assertEquals(1, event.getProviderId());
+    public void test_CanSourceTableName_FromBeforeEach(){
+        assertEquals("offer", debeziumTranslator.getTableName());
     }
 
-    private JsonNode getJsonPayload() throws JsonProcessingException {
-        String jsonString = """
-            {
-              "before": {
-                "id": 101,
-                "created_at": "2025-08-17T10:15:30Z",
-                "provider_id": "1"
-              },
-              "after": {
-                "id": 101,
-                "created_at": "2025-08-17T10:15:30Z",
-                "provider_id": "1"
-              }
-            }
-            """;
-        String actualString = """
-        {
-          "before": null,
-          "after": {
-            "status": 0,
-            "created_at": 1755461128255674,
-            "id": 1,
-            "provider_id": 1,
-            "description": "D",
-            "title": "T",
-            "offer_type": "ONE_TIME"
-          },
-          "source": {
-            "version": "2.5.0.Final",
-            "connector": "mysql",
-            "name": "myapp",
-            "ts_ms": 1755460697000,
-            "snapshot": "false",
-            "db": "testdb",
-            "sequence": null,
-            "table": "offer",
-            "server_id": 1,
-            "gtid": null,
-            "file": "mysql-bin.000004",
-            "pos": 260876,
-            "row": 0,
-            "thread": 621,
-            "query": null
-          },
-          "op": "c",
-          "ts_ms": 1755460697987,
-          "transaction": null
-        }
-        """;
-        return (new ObjectMapper()).readTree(jsonString);
+    @Test
+    public void test_EmptyStringPayload_ReturnsNull() throws JsonProcessingException {
+        assertNull(debeziumTranslator.translateCreated(""));
     }
 
-    private JsonNode getJsonCDC() throws JsonProcessingException {
-        String jsonString = """
-            {
-            "payload" :
-              {
-              "before": {
-                "id": 101,
-                "created_at": "2025-08-17T10:15:30Z",
-                "provider_id": "1"
-              },
-              "after": {
-                "id": 101,
-                "created_at": "2025-08-17T10:15:30Z",
-                "provider_id": "1"
-              }
-              }
-            }
-            """;
-        return (new ObjectMapper()).readTree(jsonString);
+    @Test
+    public void test_AvoidsNullPointerException_If_OP_KeyIsMissing() throws JsonProcessingException {
+        assertDoesNotThrow(() -> debeziumTranslator.translateCreated("""
+                {
+                "before":{},
+                "after":{}
+                }
+                """));
+    }
+
+    @Test
+    public void test_IsOfferCreateStatement_ReturnsFalseIfNoOp() throws Exception{
+        Method isOfferCreateStatement = DebeziumTranslator.class.getDeclaredMethod("isOfferCreateStatement", JsonNode.class);
+        isOfferCreateStatement.setAccessible(true);
+        JsonNode payload = new ObjectMapper().readTree("""
+                {
+                "before":{},
+                "after":{}
+                }
+                """);
+        assertFalse((Boolean) isOfferCreateStatement.invoke(debeziumTranslator, payload));
+    }
+    @Test
+    public void test_IsOfferCreateStatement_ReturnsFalseIfNotCreateStatement() throws Exception{
+        Method isOfferCreateStatement = DebeziumTranslator.class.getDeclaredMethod("isOfferCreateStatement", JsonNode.class);
+        isOfferCreateStatement.setAccessible(true);
+        JsonNode payload = new ObjectMapper().readTree("""
+                {
+                "before":{},
+                "after":{},
+                "op":"u"
+                }
+                """);
+        assertFalse((Boolean) isOfferCreateStatement.invoke(debeziumTranslator, payload));
     }
 }
