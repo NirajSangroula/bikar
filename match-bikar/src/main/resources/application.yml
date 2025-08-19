@@ -3,3 +3,26 @@ spring:
     name: match-bikar
   config:
     import: optional:configserver:http://localhost:8888
+  datasource:
+    url: jdbc:mysql://localhost:3306/matchdb
+    username: root
+    password: rootpassword
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  kafka:
+    consumer:
+      group-id: match-consumer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.pm.niraj.sharedlib.event"
+    bootstrap-servers: localhost:9092
+#      Can be centralized
+cdc-topic:
+  offer:
+    name: cdc-offer-deal
+server:
+  port: 8089

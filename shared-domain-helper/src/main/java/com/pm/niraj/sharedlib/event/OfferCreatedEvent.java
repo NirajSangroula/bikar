@@ -2,11 +2,15 @@ package com.pm.niraj.sharedlib.event;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.Instant;
 
 @Getter
 @Builder
+@NoArgsConstructor
+@ToString
 public class OfferCreatedEvent implements DomainEvent {
     private long offerId;
     private Instant createdAt;
