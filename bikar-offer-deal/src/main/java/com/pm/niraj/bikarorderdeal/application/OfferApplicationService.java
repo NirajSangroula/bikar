@@ -22,4 +22,8 @@ public class OfferApplicationService {
         //Use debezium to properly do stuff here: transactional log trailing ok
         return Optional.of(savedOffer);
     }
+
+    public Optional<Offer> getOffer(Long id) {
+        return offerRepository.findById(id);
+    }
 }

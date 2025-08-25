@@ -21,6 +21,11 @@ spring:
         spring.json.trusted.packages: "com.pm.niraj.sharedlib.event"
     bootstrap-servers: localhost:9092
 #      Can be centralized
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+    deserialization:
+      read-date-timestamps-as-nanoseconds: false
 cdc-topic:
   offer:
     name: cdc-offer-deal

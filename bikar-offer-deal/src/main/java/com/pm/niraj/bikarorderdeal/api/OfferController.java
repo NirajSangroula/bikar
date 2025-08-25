@@ -27,11 +27,14 @@ public class OfferController {
     }
 
     @GetMapping("/get/{id}")
-    public ResponseEntity<Offer> getOfferById(@PathVariable Long id){
+    public ResponseEntity<OfferDto> getOfferById(@PathVariable Long id){
         if(id == -1L){
             throw new RuntimeException("invalid offer id");
         }
-        return ResponseEntity.ok().body(new Offer());
+        return offerApplicationService.getOffer(id)
+                .map(offerDtoAdapter::dtoFrom)
+                .map(offer -> ResponseEntity.ok().body(offer))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/create")

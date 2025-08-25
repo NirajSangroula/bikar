@@ -5,19 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d0af8965-956a-4fe2-a2e0-699320838353" name="Changes" comment="Setup debezium - for mydb.offer -&gt; created docker-compose, to also setup initialization.sql, for generating debezium user - And configure variables in mysql - via my.in file. Now, at least for now, event is correctly published by Debezium using kafka.">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bikar-shared-lib/bikar-shared-lib.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared-domain-helper/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/SharedLibWebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/event/DomainEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/event/OfferCreatedEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/publisher/DomainEventPublisher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/publisher/DummyDomainEventPublisher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/entity/BaseModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/entity/Offer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/repository/OfferRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/service/OfferService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/translator/OfferTranslator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/translator/Translator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/OfferCreatedTransformerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/OfferCreatedTransformerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/api/OfferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/api/OfferController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/application/OfferApplicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/application/OfferApplicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/domain/entity/Provider.java" beforeDir="false" afterPath="$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/domain/entity/Provider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-offer-deal/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/bikar-offer-deal/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-offer-deal/src/test/java/com/pm/niraj/bikarorderdeal/DebeziumTransformerFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/bikar-offer-deal/src/test/java/com/pm/niraj/bikarorderdeal/DebeziumTransformerFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/libraries/java.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/bikar-shared-lib.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/src/main/java/com/pm/niraj/sharedlib/SharedLibWebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/src/main/java/com/pm/niraj/sharedlib/event/DomainEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/src/main/java/com/pm/niraj/sharedlib/event/OfferCreatedEvent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/src/main/java/com/pm/niraj/sharedlib/publisher/DomainEventPublisher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bikar-shared-lib/src/main/java/com/pm/niraj/sharedlib/publisher/DummyDomainEventPublisher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/match-bikar/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/match-bikar/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/kafka/OfferCreatedConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/match-bikar/src/main/java/com/pm/niraj/matchbikar/kafka/OfferCreatedConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/match-bikar/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/match-bikar/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/event/OfferCreatedEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/sharedlib/event/OfferCreatedEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/classes/com/pm/niraj/sharedlib/debezium/CustomDebeziumParams.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/classes/com/pm/niraj/sharedlib/debezium/DebeziumTransformerFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/classes/com/pm/niraj/sharedlib/debezium/DebeziumTranslator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/classes/com/pm/niraj/sharedlib/debezium/Transformer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/classes/com/pm/niraj/sharedlib/event/OfferCreatedEvent$OfferCreatedEventBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/classes/com/pm/niraj/sharedlib/event/OfferCreatedEvent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shared-domain-helper/target/shared-domain-helper-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/shared-domain-helper/target/shared-domain-helper-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +95,12 @@
     &quot;accountId&quot;: &quot;47772085-df08-4f1b-b0bf-0a96a1b3a0c0&quot;
   }
 }</component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="MavenRunConfiguration" name="match-bikar [org.springframework.boot:spring-boot-maven-plugin:3.5.3:run]" />
+      <run-configuration type="MavenRunConfiguration" name="bikar-offer-deal [org.springframework.boot:spring-boot-maven-plugin:3.5.3:run]" />
+    </enabled-run-configurations>
+  </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -75,6 +111,7 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+    <option name="explicitlyEnabledProfiles" value="dev" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -91,6 +128,8 @@
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
+    "JUnit.DebeziumTransformerFactoryTest.executor": "Debug",
+    "JUnit.DebeziumTransformerFactoryTest.test_ToInstantMethodProperlyTransforms.executor": "Run",
     "JUnit.KafkaTest.executor": "Run",
     "JUnit.KafkaTest.test__canPublishMessage.executor": "Run",
     "JUnit.OfferDealControllerTest.executor": "Run",
@@ -104,10 +143,15 @@
     "JUnit.OfferDtoTest.test__CreatingDtoFromOffer__populatesAllField.executor": "Run",
     "JUnit.OfferDtoTest.test__CreatingOfferFromDto__populatesAllField.executor": "Run",
     "JUnit.OfferTests.executor": "Run",
+    "Maven.Bikar Offer Deal.executor": "Run",
     "Maven.bikar-config-server [spring-boot:run].executor": "Run",
     "Maven.bikar-offer-deal [clean,compile].executor": "Run",
+    "Maven.bikar-offer-deal [clean,install].executor": "Run",
     "Maven.bikar-offer-deal [clean].executor": "Run",
+    "Maven.bikar-offer-deal [org.springframework.boot:spring-boot-maven-plugin:3.5.3:run].executor": "Run",
     "Maven.bikar-shared-lib [install].executor": "Run",
+    "Maven.match-bikar [org.springframework.boot:spring-boot-maven-plugin:3.5.3:run].executor": "Run",
+    "Maven.shared-domain-helper [clean,install].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -122,10 +166,11 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SHELLCHECK.PATH": "I do mind",
     "Spring Boot.BikarGatewayApplication.executor": "Run",
-    "Spring Boot.BikarOrderDealApplication.executor": "Run",
+    "Spring Boot.BikarOrderDealApplication.executor": "Debug",
     "Spring Boot.BikarUseraccountApplication.executor": "Run",
-    "git-widget-placeholder": "BIK-4-Offer-functionality-in-OfferDeal-ms",
-    "last_opened_file_path": "/home/niraj/bikar/shared-domain-helper",
+    "Spring Boot.MatchBikarApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/niraj/bikar/bikar-offer-deal",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -158,7 +203,11 @@
       <recent name="$PROJECT_DIR$/bikar-offer-deal/src/test" />
       <recent name="$PROJECT_DIR$/" />
     </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.pm.niraj.matchbikar.translator" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.pm.niraj.matchbikar.entity" />
       <recent name="com.pm.niraj.bikarorderdeal.entity" />
     </key>
   </component>
@@ -166,39 +215,40 @@
     <option name="configurationTypes">
       <set>
         <option value="KtorApplicationConfigurationType" />
+        <option value="MavenRunConfiguration" />
         <option value="MicronautRunConfigurationType" />
         <option value="QuarkusRunConfigurationType" />
         <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.OfferDealControllerTest">
-    <configuration name="KafkaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Spring Boot.MatchBikarApplication">
+    <configuration name="DebeziumTransformerFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bikar-offer-deal" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.pm.niraj.bikarorderdeal.infrastructures.*" />
+          <option name="PATTERN" value="com.pm.niraj.bikarorderdeal.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.pm.niraj.bikarorderdeal.infrastructures" />
-      <option name="MAIN_CLASS_NAME" value="com.pm.niraj.bikarorderdeal.infrastructures.KafkaTest" />
+      <option name="PACKAGE_NAME" value="com.pm.niraj.bikarorderdeal" />
+      <option name="MAIN_CLASS_NAME" value="com.pm.niraj.bikarorderdeal.DebeziumTransformerFactoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KafkaTest.test__canPublishMessage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DebeziumTransformerFactoryTest.test_ToInstantMethodProperlyTransforms" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="bikar-offer-deal" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.pm.niraj.bikarorderdeal.infrastructures.*" />
+          <option name="PATTERN" value="com.pm.niraj.bikarorderdeal.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.pm.niraj.bikarorderdeal.infrastructures" />
-      <option name="MAIN_CLASS_NAME" value="com.pm.niraj.bikarorderdeal.infrastructures.KafkaTest" />
-      <option name="METHOD_NAME" value="test__canPublishMessage" />
+      <option name="PACKAGE_NAME" value="com.pm.niraj.bikarorderdeal" />
+      <option name="MAIN_CLASS_NAME" value="com.pm.niraj.bikarorderdeal.DebeziumTransformerFactoryTest" />
+      <option name="METHOD_NAME" value="test_ToInstantMethodProperlyTransforms" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -261,7 +311,7 @@
       <option name="filePath" />
       <method v="2" />
     </configuration>
-    <configuration name="bikar-config-server [spring-boot:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+    <configuration name="Bikar Offer Deal" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -279,13 +329,15 @@
             <option name="multimoduleDir" />
             <option name="pomFileName" />
             <option name="profilesMap">
-              <map />
+              <map>
+                <entry key="dev" value="true" />
+              </map>
             </option>
             <option name="projectsCmdOptionValues">
               <list />
             </option>
             <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$/bikar-config-server" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/bikar-offer-deal" />
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
@@ -338,12 +390,12 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.DebeziumTransformerFactoryTest.test_ToInstantMethodProperlyTransforms" />
+      <item itemvalue="JUnit.DebeziumTransformerFactoryTest" />
       <item itemvalue="JUnit.OfferDealTest" />
-      <item itemvalue="JUnit.KafkaTest" />
-      <item itemvalue="JUnit.KafkaTest.test__canPublishMessage" />
       <item itemvalue="JUnit.OfferDealControllerTest.test__CreatingOffer__SavesOfferInDatabase" />
       <item itemvalue="JUnit.OfferDealControllerTest" />
-      <item itemvalue="Maven.bikar-config-server [spring-boot:run]" />
+      <item itemvalue="Maven.Bikar Offer Deal" />
       <item itemvalue="Spring Boot.BikarGatewayApplication" />
       <item itemvalue="Spring Boot.BikarConfigServerApplication" />
       <item itemvalue="Spring Boot.BikarOrderDealApplication" />
@@ -353,11 +405,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DebeziumTransformerFactoryTest.test_ToInstantMethodProperlyTransforms" />
+        <item itemvalue="JUnit.DebeziumTransformerFactoryTest" />
         <item itemvalue="JUnit.OfferDealControllerTest" />
         <item itemvalue="JUnit.OfferDealControllerTest.test__CreatingOffer__SavesOfferInDatabase" />
         <item itemvalue="JUnit.OfferDealTest" />
-        <item itemvalue="JUnit.KafkaTest" />
-        <item itemvalue="JUnit.KafkaTest.test__canPublishMessage" />
       </list>
     </recent_temporary>
   </component>
@@ -395,6 +447,8 @@
       <workItem from="1754882468341" duration="340000" />
       <workItem from="1754882826085" duration="910000" />
       <workItem from="1754884812171" duration="824000" />
+      <workItem from="1755735581549" duration="6784000" />
+      <workItem from="1756090252538" duration="11266000" />
     </task>
     <task id="LOCAL-00001" summary="BIK-11 - Added Authentication with JWT, Profiling (dev, !dev, auth_test)">
       <option name="closed" value="true" />
@@ -489,11 +543,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/application/OfferApplicationService.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/bikar-shared-lib/src/main/java/com/pm/niraj/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="7" />
@@ -502,6 +551,11 @@
           <url>file://$PROJECT_DIR$/shared-domain-helper/src/main/java/com/pm/niraj/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/bikar-offer-deal/src/main/java/com/pm/niraj/bikarorderdeal/OfferCreatedTransformerFactory.java</url>
+          <line>39</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

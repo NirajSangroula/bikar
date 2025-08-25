@@ -7,12 +7,13 @@
         <option value="$PROJECT_DIR$/bikar-config-server/pom.xml" />
         <option value="$PROJECT_DIR$/bikar-offer-deal/pom.xml" />
         <option value="$PROJECT_DIR$/shared-domain-helper/pom.xml" />
+        <option value="$PROJECT_DIR$/match-bikar/pom.xml" />
+        <option value="$PROJECT_DIR$/bikar-useraccount/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/bikar-config-server/pom.xml" />
-        <option value="$PROJECT_DIR$/bikar-offer-deal/pom.xml" />
       </set>
     </option>
   </component>

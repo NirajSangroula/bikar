@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,6 +26,14 @@ public class DebeziumTransformerFactoryTest {
         assertEquals(1, event.getOfferId());
         assertEquals(Instant.ofEpochMilli(1755461128255674L).toString(), event.getCreatedAt().toString());
         assertEquals(1, event.getProviderId());
+    }
+
+    @Test
+    public void test_ToInstantMethodProperlyTransforms() throws NoSuchMethodException, JsonProcessingException, InvocationTargetException, IllegalAccessException {
+        Method toInstant = OfferCreatedTransformerFactory.class.getDeclaredMethod("getPropertyInstant", String.class, JsonNode.class);
+        toInstant.setAccessible(true);
+        Instant instant = (Instant) toInstant.invoke(debeziumTransformerFactory, "created_at", getJsonPayload().get("after"));
+        assertEquals(Instant.ofEpochMilli(1755461128255674L/1000).toString().substring(0, 23), instant.toString().substring(0, 23));
     }
     public static JsonNode getJsonPayload() throws JsonProcessingException {
         String jsonString = """

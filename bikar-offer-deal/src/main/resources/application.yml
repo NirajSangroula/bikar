@@ -25,9 +25,15 @@ spring:
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       key-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
     bootstrap-servers: localhost:9092
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+    deserialization:
+      read-date-timestamps-as-nanoseconds: false
 cdc-topic:
   name: cdc-offer-deal
 dbz:
   transformer:
     table: offer
-
+server:
+  port: 8082
